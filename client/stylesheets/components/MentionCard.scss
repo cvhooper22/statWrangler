@@ -1,0 +1,90 @@
+@import "~transcend-react/stylesheets/variables";
+
+@mixin de-emphasized {
+  filter: grayscale(100%);
+  opacity: 0.33;
+}
+
+@mixin emphasis-transition {
+    transition: filter $global-transition-duration ease, opacity $global-transition-duration ease;
+}
+
+.draggable-mention-card {
+  cursor: move;
+}
+
+.mention-card {
+  flex-direction: row;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &.mention-card--select-mode:hover {
+    border-color: $brand-color;
+  }
+  &.mention-card--select-mode .mention-card__interactions {
+    opacity: 0;
+  }
+
+  &__select-mode-overlay::after {
+    content: "";
+    position: absolute;
+    top: -$global-border-width;
+    left: -$global-border-width;
+    bottom: -$global-border-width;
+    right: -$global-border-width;
+    cursor: pointer;
+    background-color: rgba($panel-background-color, 0.75);
+    border-left: 0 solid transparent;
+    transition: all $global-transition-duration ease;
+  }
+  &__select-mode-overlay--selected::after {
+    content: "";
+    top: 0;
+    bottom: 0;
+    background-color: rgba($panel-background-color, 0.15);
+    border-left: 0.5em solid $brand-color;
+  }
+
+  &:hover:not(.mention-card--select-mode) .mention-card__interactions {
+    filter: none;
+    opacity: 1;
+  }
+  &__names {
+    flex-wrap: wrap;
+  }
+  &__media {
+    $size: 250px;
+    max-height: rem-calc($size * 1.5);
+    overflow-y: auto;
+    &__link {
+      width: rem-calc($size);
+      height: rem-calc($size);
+      margin: auto;
+    }
+    &__image {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+    }
+  }
+  &__interactions {
+    @include emphasis-transition();
+    &:not(.mention-card__interactions--active) {
+      @include de-emphasized();
+    }
+    &__interaction {
+      @include emphasis-transition();
+      &--inactive {
+        @include de-emphasized();
+      }
+    }
+  }
+}
+
+textarea.mention-card__interactions__interaction__text {
+  margin: 0;
+}

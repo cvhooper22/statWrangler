@@ -1,2 +1,2 @@
-# statWrangler
-A Simple Web App to filter stat results
+# monocle
+An insight into images
