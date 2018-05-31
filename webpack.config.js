@@ -4,7 +4,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const WebpackWriteStatsPlugin = require('webpack-write-stats-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 
-const productName = 'Monocle';
+const productName = 'StatWrangler';
 
 // NOTE: if you need detailed trace of webpack enable the next line:
 // process.traceDeprecation = true;

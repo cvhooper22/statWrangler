@@ -1,0 +1,158 @@
+[
+  {
+    "name": "Location",
+    "value": "location",
+    "subValues": [
+      {
+        "name": "Away",
+        "value": "@"
+      },
+      {
+        "name": "Home",
+        "value": ""
+      },
+      {
+        "name": "Neutral",
+        "value": "N"
+      }
+    ]
+  },
+  {
+    "name": "Game Type",
+    "value": "game_type",
+    "subValues": [
+      {
+        "name": "Regular Season",
+        "value": "REG" 
+      },
+      {
+        "name": "Conference Tournament",
+        "value": "CTOURN"
+      },
+      {
+        "name": "NIT",
+        "value": "NIT"
+      },
+      {
+        "name": "NCAA",
+        "value": "NCAA"
+      }
+    ]
+  },
+  {
+    "name": "Result",
+    "value": "game_result",
+    "subValues": [
+      {
+        "name": "Win",
+        "value": "W"
+      },
+      {
+        "name": "Loss",
+        "value": "L"
+      }
+    ]
+  },
+  {
+    "name": "Game Started",
+    "value": "gs",
+    "subValues": [
+      {
+        "name": "Started",
+        "value": "1"
+      },
+      {
+        "name": "Off Bench",
+        "value": "0"
+      }
+    ]
+  },
+  {
+    "name": "Minutes Played",
+    "value": "mp"
+  },
+  {
+    "name": "Field Goals Made",
+    "value": "fg"
+  },
+  {
+    "name": "Field Goals Att",
+    "value": "fga"
+  },
+  {
+    "name": "Field Goal Percentage",
+    "value": "fg_pct"
+  },
+  {
+    "name": "2pt Field Goals Made",
+    "value": "fg2"
+  },
+  {
+    "name": "2pt Field Goals Att",
+    "value": "fg2a"
+  },
+  {
+    "name": "2pt Field Goal Percentage",
+    "value": "fg2_pct"
+  },
+  {
+    "name": "3pt Field Goals Made",
+    "value": "fg3"
+  },
+  {
+    "name": "3pt Field Goals Att",
+    "value": "fg3a"
+  },
+  {
+    "name": "3pt Field Goal Percentage",
+    "value": "fg3_pct"
+  },
+  {
+    "name": "Free Throws Made",
+    "value": "ft"
+  },
+  {
+    "name": "Free Throws Att",
+    "value": "fta"
+  },
+  {
+    "name": "Free Throw Percentage",
+    "value": "ft_pct"
+  },
+  {
+    "name": "Offensive Rebounds",
+    "value": "orb"
+  },
+  {
+    "name": "Defensive Rebounds",
+    "value": "drb"
+  },
+  {
+    "name": "Total Rebounds",
+    "value": "trb"
+  },
+  {
+    "name": "Assists",
+    "value": "ast"
+  },
+  {
+    "name": "Steals",
+    "value": "stl"
+  },
+  {
+    "name": "Blocks",
+    "value": "blk"
+  },
+  {
+    "name": "Turnovers",
+    "value": "tov"
+  },
+  {
+    "name": "Fouls",
+    "value": "pf"
+  },
+  {
+    "name": "Total Points",
+    "value": "pts"
+  }
+]
