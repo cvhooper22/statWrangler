@@ -12,7 +12,8 @@
     "build": "webpack -p --devtool eval --bail",
     "clean": "rm -rf public/monitors/",
     "watch": "webpack -w -d",
-    "start": "webpack-dev-server --hot"
+    "start": "webpack-dev-server --hot",
+    "statServer": "node server/server.js"
   },
   "dependencies": {
     "autoprefixer": "^7.1.5",

@@ -14,7 +14,7 @@ module.exports = {
   context: path.resolve(__dirname, 'client/'),
   entry: {
     main: path.resolve(__dirname, 'client/application.js'),
-    orbiter_light: path.resolve(__dirname, 'client', 'stylesheets', 'index.scss'),
+    styles: path.resolve(__dirname, 'client', 'stylesheets', 'index.scss'),
   },
   devtool: 'cheap-module-source-map', // React 16's suggestion: https://reactjs.org/docs/cross-origin-errors.html#webpack
   name: productName,

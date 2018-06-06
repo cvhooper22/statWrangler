@@ -9,6 +9,7 @@ import {
 } from 'transcend-react';
 import MentionCard from '../components/MentionCard';
 import Dropdown from '../components/Dropdown';
+import FilterOptionSelector from '../components/FilterOptionSelector';
 import mentions from '../assets/data.json';
 import filterOptions from '../assets/filterOptions.json';
 
@@ -49,25 +50,21 @@ export default class StatWranglerApp extends React.Component {
   render () {
     return (
       <div className={ this.state.imageViewerOpen ? 'image-viewer-open' : ''}>
-        <div className="selectors">
+        <div className="selectors section">
           <Dropdown
             items={ [{ name: 'Eli'}, { name: 'Payton'}, { name: 'Evan'}] }
             itemToString={ item => item.name }
             placeholder={ 'Pick a Player' }
           />
         </div>
-        <div className="qualifiers">
+        <div className="qualifiers section">
           Here are some qualifiers
-          <Dropdown
-            items={ filterOptions }
-            itemToString={ item => item.name }
-            placeholder={ 'Pick a filter' }
-          />
+          <FilterOptionSelector />
         </div>
-        <div className="team-stats">
+        <div className="team-stats section">
           These are the team stats
         </div>
-        <div className="player-stats">
+        <div className="player-stats section">
           Here are the resulting player stats
         </div>
       </div>
