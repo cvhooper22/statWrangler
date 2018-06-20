@@ -20,10 +20,18 @@ const compareOptions = [
 
 export default class FilterOptionSelector extends React.Component {
   static propTypes = {
-    onOptionSelect: PropTypes.func,
+    onOptionSave: PropTypes.func,
+    onOptionRemove: PropTypes.func,
+    option: PropTypes.object,
   };
 
-  state = { currentOption: {}, };
+  constructor (props, ...args) {
+    super(props, ...args);
+    this.state = {
+      currentOption: props.option || {},
+      currentOptionValue: {},
+    };
+  }
 
   onOptionChange = (option) => {
     console.log('optionChanged, here it is', option);
@@ -32,6 +40,7 @@ export default class FilterOptionSelector extends React.Component {
 
   onFilterValueChange = (option) => {
     console.log('the filter value has changed', option);
+    this.setState({ currentOptionValue: option });
   }
 
   onSaveClick = (evt) => {
@@ -39,12 +48,20 @@ export default class FilterOptionSelector extends React.Component {
     console.log('use this filter!');
   }
 
+  onRemoveClick = () => {
+    if (this.props.onOptionRemove) {
+      this.props.onOptionRemove(this.state.currentOption);
+    }
+  }
+
   render () {
     return (
       <div className="filter-option-row flex">
         { this.renderParentOption() }
         { this.renderSecondaryOptions() }
+        { this.renderInput() }
         { this.renderSaveButton() }
+        <button type="button" onClick={ this.onRemoveClick }>Remove</button>
       </div>
     )
   }
@@ -62,22 +79,30 @@ export default class FilterOptionSelector extends React.Component {
   }
 
   renderSecondaryOptions () {
-    if (Object.keys(this.state.currentOption).length < 1) {
-      return undefined;
-    }
     const options = this.state.currentOption.subValues || compareOptions;
+    let placeholder = this.state.currentOption.subValues ? 'Select Value' : 'Select A Modifier';
+    if (this.state.currentOptionValue) {
+      placeholder = this.state.currentOptionValue.name;
+    }
     return (
       <Dropdown
         items={ options }
         itemToString={ item => item.name }
-        placeholder={ 'Select Value' }
+        placeholder={ placeholder }
         onChange={ this.onFilterValueChange }
       />
     );
   }
 
+  renderInput () {
+    if (this.state.currentOptionValue && (compareOptions.indexOf(this.state.currentOptionValue) > -1)) {
+      return <input type="number" ref={ n => this.input = n } />;;
+    }
+    return undefined;
+  }
+
   renderSaveButton () {
     const enabled = this.state.currentFilter;
-    return <button type="button" onClick={ this.onSaveClick } disabled={ !enabled }>Set Filter</button>
+    return <button type="button" onClick={ this.onSaveClick } disabled={ !enabled }>Set Filter</button>;
   }
 }  

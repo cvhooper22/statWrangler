@@ -9,7 +9,8 @@ import {
 } from 'transcend-react';
 import MentionCard from '../components/MentionCard';
 import Dropdown from '../components/Dropdown';
-import FilterOptionSelector from '../components/FilterOptionSelector';
+import FilterOptions from '../components/FilterOptions';
+import PlayerStats from '../components/PlayerStats';
 import mentions from '../assets/data.json';
 import filterOptions from '../assets/filterOptions.json';
 
@@ -34,17 +35,26 @@ const filterOptions = [
 export default class StatWranglerApp extends React.Component {
   constructor(...args) {
     super(...args);
-    this.state = {};
+    this.state = {
+      players: [],
+      filters: [],
+      teamStats: [],
+      playerStats: [],
+      currentPlayer: {},
+    };
   }
 
   componentDidMount () {
-    // fetch('https://cors-anywhere.herokuapp.com/' + MENTION_URL)
-    //   .then(response => response.json())
-    //   .then((data) => {
-    //     const myMentions = data.slice(0, 149);
-    //     this.setState({ mentions: myMentions });
-    //   })
-    //   .catch(thing => console.log('the thing', thing));
+    fetch('http://localhost:3666/team_roster/brigham-young')
+      .then(response => response.json())
+      .then((data) => {
+        this.setState({ players: data });
+      })
+      .catch(thing => console.log('the error', thing));
+  }
+
+  onPlayerPicked = (player) => {
+    this.setState({ currentPlayer: player });
   }
 
   render () {
@@ -52,21 +62,20 @@ export default class StatWranglerApp extends React.Component {
       <div className={ this.state.imageViewerOpen ? 'image-viewer-open' : ''}>
         <div className="selectors section">
           <Dropdown
-            items={ [{ name: 'Eli'}, { name: 'Payton'}, { name: 'Evan'}] }
+            items={ this.state.players }
             itemToString={ item => item.name }
             placeholder={ 'Pick a Player' }
+            onChange={ this.onPlayerPicked }
           />
-        </div>
-        <div className="qualifiers section">
-          Here are some qualifiers
-          <FilterOptionSelector />
         </div>
         <div className="team-stats section">
           These are the team stats
         </div>
-        <div className="player-stats section">
-          Here are the resulting player stats
+        <div className="qualifiers section">
+          Here are some qualifiers
+          <FilterOptions />
         </div>
+        <PlayerStats player={ this.state.currentPlayer } />
       </div>
     );
   }
