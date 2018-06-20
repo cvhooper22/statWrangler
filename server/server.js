@@ -29,7 +29,7 @@ server.get('/team_logs/:team', function (req, resp) {
           location: $("td[data-stat='game_location']", this).text(),
           result: $("td[data-stat='game_result']", this).text(),
           pts: $("td[data-stat='pts']", this).text(),
-          opp_pts: $("td[data-stat='opp_pts']", this).text(),
+          oppPts: $("td[data-stat='opp_pts']", this).text(),
           fg: $("td[data-stat='fg']", this).text(),
           fga: $("td[data-stat='fga']", this).text(),
           fgPct: $("td[data-stat='fg_pct']", this).text(),
@@ -40,7 +40,6 @@ server.get('/team_logs/:team', function (req, resp) {
           fta: $("td[data-stat='fta']", this).text(),
           ftPct: $("td[data-stat='ft_pct']", this).text(),
           orb: $("td[data-stat='orb']", this).text(),
-          drb: $("td[data-stat='drb']", this).text(),
           trb: $("td[data-stat='trb']", this).text(),
           ast: $("td[data-stat='ast']", this).text(),
           stl: $("td[data-stat='stl']", this).text(),
@@ -57,7 +56,6 @@ server.get('/team_logs/:team', function (req, resp) {
           oppFta: $("td[data-stat='opp_fta']", this).text(),
           oppFtPct: $("td[data-stat='opp_ft_pct']", this).text(),
           oppOrb: $("td[data-stat='opp_orb']", this).text(),
-          oppDrb: $("td[data-stat='opp_drb']", this).text(),
           oppTrb: $("td[data-stat='opp_trb']", this).text(),
           oppAst: $("td[data-stat='opp_ast']", this).text(),
           oppStl: $("td[data-stat='opp_stl']", this).text(),
@@ -65,6 +63,8 @@ server.get('/team_logs/:team', function (req, resp) {
           oppTov: $("td[data-stat='opp_tov']", this).text(),
           oppPf: $("td[data-stat='opp_pf']", this).text(),
         };
+        game.drb = game.trb - game.orb;
+        game.oppDrb = game.oppTrb - game.oppOrb;
         game.fg2 = game.fg - game.fg3;
         game.fg2a = game.fga - game.fg3a;
         game.fg2Pct = game.fg2 / game.fg2a;
