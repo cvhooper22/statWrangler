@@ -66,6 +66,7 @@ export default class StatWranglerApp extends React.Component {
             itemToString={ item => item.name }
             placeholder={ 'Pick a Player' }
             onChange={ this.onPlayerPicked }
+            disabled={ this.state.players.length < 1}
           />
         </div>
         <div className="team-stats section">

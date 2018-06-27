@@ -28,6 +28,7 @@ const Dropdown = ({
   placeholder,
   className,
   renderItem,
+  disabled,
 }) => (
   <Downshift
     itemToString={ itemToString }
@@ -70,6 +71,7 @@ Dropdown.propTypes = {
   placeholder: PropTypes.string,
   className: PropTypes.string,
   renderItem: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 
 Dropdown.defaultProps = {

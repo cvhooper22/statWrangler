@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import StatTable from './StatTable';
 
 export default class PlayerStats extends Component {
   static propTypes = {
@@ -24,7 +25,7 @@ export default class PlayerStats extends Component {
   render () {
     return (
       <div className="team-stats section">
-        These are the team stats
+        <StatTable stats={ this.state.stats } />
       </div>
     );
   }  
